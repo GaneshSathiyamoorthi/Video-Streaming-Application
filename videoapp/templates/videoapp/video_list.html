@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h1>Available Videos</h1>
+    <ul>
+        {% for video in videos %}
+            <li>
+                <a href="{% url 'video_detail' video.id %}">{{ video.name }}</a>
+                {% if video.user == request.user %}
+                    <a href="{% url 'delete_video' video.id %}">Delete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
